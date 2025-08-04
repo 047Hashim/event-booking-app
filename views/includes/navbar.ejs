@@ -1,0 +1,52 @@
+<nav class="navbar mainNavbar navbar-expand-md border-bottom sticky-top">
+  <div class="container-fluid">
+    <% if(!currUser){ %>
+    <a class="navbar-brand" href="/"
+      ><i class="fa-regular fa-calendar"></i> EventBook</a
+    >
+    <% }else{ %>
+    <a class="navbar-brand" href="/events"
+      ><i class="fa-regular fa-calendar"></i> EventBook</a
+    >
+    <% } %>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <% if(!currUser){ %>
+        <a class="nav-link <%= (url==='/')?'active':'' %>" href="/">Home</a>
+        <% }else{ %>
+        <a class="nav-link <%= (url==='/events')?'active':'' %>" href="/events"
+          >Browse Events</a
+        >
+        <a
+          class="nav-link <%= (url==='/organizer-info')?'active':'' %>"
+          href="/organizer-info"
+          >Organize</a
+        >
+        <% } %>
+      </div>
+      <div class="navbar-nav ms-auto">
+        <% if(!currUser){ %>
+        <a class="nav-link <%= (url==='/login')?'active':'' %>" href="/login"
+          >Login</a
+        >
+        <a class="nav-link <%= (url==='/signup')?'active':'' %>" href="/signup"
+          >Signup</a
+        >
+        <% }else{ %>
+        <a class="nav-link" href="/logout">Logout</a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>

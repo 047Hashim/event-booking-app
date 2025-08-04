@@ -1,0 +1,56 @@
+<% layout('layouts/boilerplate') -%>
+<div class="container authenticate mt-5">
+  <h2 class="text-center mb-4">
+    <i class="fa-solid fa-user-plus me-2"></i>Create Your Account
+  </h2>
+  <div class="row justify-content-center event-form">
+    <div class="col-md-6">
+      <form action="/signup" method="POST" novalidate class="needs-validation">
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            name="username"
+            placeholder="Create your username"
+            required
+          />
+          <div class="invalid-feedback">Please enter a username.</div>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="you@example.com"
+            required
+          />
+          <div class="invalid-feedback">
+            Please enter a valid email address.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            placeholder="Create a strong password"
+            required
+          />
+          <div class="invalid-feedback">Please enter a password.</div>
+        </div>
+        <button type="submit" class="btn btn-primary w-100 primary-btn">
+          Sign Up
+        </button>
+      </form>
+      <p class="text-center mt-3 link-color">
+        Already have an account? <a href="/login">Login here</a>
+      </p>
+    </div>
+  </div>
+</div>

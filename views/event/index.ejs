@@ -1,0 +1,60 @@
+<% layout('layouts/boilerplate') -%> <% if(events.length>0){ %>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <% events.forEach(event => { %>
+  <a href="/events/<%= event._id %>" class="text-decoration-none overlay">
+    <div class="col h-100">
+      <div class="card h-100 shadow">
+        <!-- Event Image -->
+        <img
+          src="<%= event.image.url  %>"
+          class="card-img-top"
+          alt="Event Image"
+          style="height: 200px; object-fit: cover"
+        />
+
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">
+            <%= event.title.length > 35 ? event.title.substring(0,
+            event.title.substring(0, 35).lastIndexOf(" ")).trim() + "..." :
+            event.title %>
+          </h5>
+          <p class="card-text">
+            <%= event.description.length > 40 ? event.description.substring(0,
+            event.description.substring(0, 40).lastIndexOf(" ")).trim() + "..."
+            : event.description %>
+          </p>
+          <div class="mt-auto">
+            <p class="text-muted">
+              <i class="fa-regular fa-calendar"></i>
+              <%= new Date(event.date).toLocaleDateString("en-US", { year:
+              "numeric", month: "long", day: "numeric" }) %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+  <% }) %>
+</div>
+<% }else{ %>
+<div class="row justify-content-center">
+  <div class="col-md-9">
+    <section class="empty-events text-center">
+      <div class="container">
+        <i class="bi bi-calendar-x display-3 text-primary mb-3"></i>
+        <h2 class="mb-3 fw-bold">No Events Available</h2>
+        <p class="lead mb-4 text-muted">
+          Looks like no one has created an event yet. Be the first to create one
+          and get the excitement started!
+        </p>
+        <a
+          href="/events/new"
+          class="btn btn-outline-primary primary-outline-btn btn-lg shadow-sm"
+        >
+          <i class="bi bi-plus-circle me-2"></i>Create an Event
+        </a>
+      </div>
+    </section>
+  </div>
+</div>
+<% } %>

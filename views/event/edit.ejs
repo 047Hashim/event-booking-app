@@ -1,0 +1,162 @@
+<% layout('layouts/boilerplate') -%>
+<div class="row justify-content-center event-form">
+  <div class="col-md-8">
+    <div class="card shadow">
+      <div class="card-header text-dark">
+        <h3 class="mb-0">Edit Event</h3>
+      </div>
+      <div class="card-body">
+        <form
+          action="/events/<%= event._id %>?_method=PUT"
+          method="POST"
+          class="needs-validation"
+          novalidate
+          enctype="multipart/form-data"
+        >
+          <!-- Title -->
+          <div class="mb-3">
+            <label for="title" class="form-label">Event Title*</label>
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              name="event[title]"
+              value="<%= event.title %>"
+              required
+            />
+            <div class="invalid-feedback">
+              Please provide a descriptive event title.
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="mb-3">
+            <label for="description" class="form-label">Description*</label>
+            <textarea
+              class="form-control"
+              id="description"
+              name="event[description]"
+              rows="3"
+              required
+            >
+<%= event.description %></textarea
+            >
+            <div class="invalid-feedback">Event description is required.</div>
+          </div>
+
+          <!-- Date and Time -->
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="date" class="form-label">Date*</label>
+              <input
+                type="date"
+                class="form-control"
+                id="date"
+                name="event[date]"
+                value="<%= event.date.toISOString().split('T')[0] %>"
+                required
+              />
+              <div class="invalid-feedback">
+                Please select a valid future date.
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="time" class="form-label">Time*</label>
+              <input
+                type="time"
+                class="form-control"
+                id="time"
+                name="event[time]"
+                value="<%= event.time %>"
+                required
+              />
+              <div class="invalid-feedback">Please enter a valid time.</div>
+            </div>
+          </div>
+
+          <!-- Location -->
+          <div class="mb-3">
+            <label for="location" class="form-label">Location*</label>
+            <input
+              type="text"
+              class="form-control"
+              id="location"
+              name="event[location]"
+              value="<%= event.location %>"
+              required
+            />
+            <div class="invalid-feedback">
+              Please provide a venue name or address.
+            </div>
+          </div>
+
+          <!-- Max Attendees -->
+          <div class="mb-3">
+            <label for="maxAttendees" class="form-label">Max Attendees*</label>
+            <input
+              type="number"
+              class="form-control"
+              id="maxAttendees"
+              name="event[maxAttendees]"
+              value="<%= event.maxAttendees %>"
+              min="1"
+              required
+            />
+            <div class="invalid-feedback">
+              Please specify the maximum number of attendees.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="image" class="form-label"> Event Image </label>
+            <input
+              type="file"
+              class="form-control"
+              id="image"
+              name="event[image]"
+            />
+
+            <% if (event.image && event.image.filename && event.image.filename
+            !== "unsplashImage") { %>
+            <small class="form-text text-muted mt-1">
+              Current image: <%= event.image.originalname %>
+            </small>
+            <% } else { %>
+            <small class="form-text text-muted mt-1">
+              Current image: Default image (Unsplash)
+            </small>
+            <% } %>
+          </div>
+
+          <!-- Hidden timezone offset field -->
+          <input
+            type="hidden"
+            id="timezoneOffset"
+            name="event[timezoneOffset]"
+            value="<%= event.timezoneOffset || 0 %>"
+          />
+
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn primary-btn">
+              <i class="bi bi-save"></i> Update Event
+            </button>
+            <a
+              href="/events/<%= event._id %>"
+              class="btn btn-outline-secondary"
+            >
+              <i class="bi bi-x-circle"></i> Cancel
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Capture timezone offset when page loads
+  document.addEventListener("DOMContentLoaded", function () {
+    const timezoneOffset = new Date().getTimezoneOffset();
+    document.getElementById("timezoneOffset").value = timezoneOffset;
+  });
+</script>

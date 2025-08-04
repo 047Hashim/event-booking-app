@@ -1,0 +1,397 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #fffdf6;
+  color: #333333;
+}
+
+.container {
+  flex: 1;
+}
+
+.overlay:hover {
+  background-color: white;
+  opacity: 0.5;
+}
+
+/* main navabar */
+.mainNavbar {
+  height: 70px;
+  background-color: #faf6e9;
+  border-bottom: 1px solid #ddeb9d !important;
+  padding: 0.5rem 1rem;
+  z-index: 5;
+}
+
+.mainNavbar .nav-link {
+  color: #4b5945 !important;
+}
+
+.mainNavbar .nav-link:hover {
+  color: #a0c878 !important;
+}
+
+.mainNavbar .nav-link.active {
+  color: #a0c878 !important;
+  border-bottom: 2px solid #a0c878;
+}
+
+.navbar-brand {
+  color: #a0c878;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: #8bb165;
+}
+
+/* subnavbar */
+.subnavbar {
+  background-color: #ddeb9d;
+  border-bottom: 1px solid #cbdc88 !important;
+  padding: 0.5rem 1rem;
+  position: sticky;
+  z-index: 3;
+  height: 50px;
+  top: 70px;
+}
+
+.subnavbar .nav-link {
+  color: #4b5945 !important;
+  font-weight: 600 !important;
+  transition: color 0.3s ease;
+}
+
+.subnavbar .nav-link:hover {
+  color: #6e814f !important;
+  text-decoration: underline;
+}
+
+/* primary button */
+
+.primary-btn {
+  background-color: #a0c878;
+  color: #fff;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+.primary-btn:hover {
+  background-color: #8bb165;
+  color: #fff;
+}
+.primary-btn:active {
+  background-color: #7aa853 !important;
+  color: #fff !important;
+}
+
+/* primary outline button */
+
+.primary-outline-btn {
+  border: 2px solid #a0c878;
+  border-color: #a0c878;
+  color: #a0c878;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.primary-outline-btn:hover {
+  background-color: #a0c878;
+  color: #fff;
+  border-color: #a0c878;
+}
+
+.primary-outline-btn:active {
+  background-color: #7aa853 !important;
+  color: #fff !important;
+  border-color: #7aa853 !important;
+}
+
+.secondary-btn {
+  font-weight: 500;
+  border: none;
+}
+
+.btn-outline-secondary {
+  color: #4b5945;
+  border-color: #cfd8c0;
+  font-weight: 500;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #f0f4eb;
+  color: #333;
+  border-color: #cfd8c0;
+}
+
+.btn-outline-secondary:active {
+  background-color: #e6ecdc !important;
+  color: #333333 !important;
+  border-color: #c0d0b0 !important;
+}
+
+.btn-danger {
+  background-color: #cf5a52;
+  font-weight: 500;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #b84740;
+}
+
+.btn-outline-danger {
+  font-weight: 500;
+  padding: 0.5rem 1.1rem;
+  border: 1.5px solid #b84740;
+  color: #cf5a52;
+  transition: all 0.3s ease;
+}
+.btn-outline-danger:hover {
+  background-color: #b84740;
+  border: 1.5px solid #b84740;
+}
+
+/* host section */
+
+.host-section {
+  background-color: #faf6e9;
+  color: #4b5945;
+}
+
+.host-section h3 {
+  font-weight: 600;
+}
+
+/* footer style */
+
+.footer-bar {
+  background-color: #a0c878;
+  color: #fff !important;
+  font-size: 0.95rem !important;
+  padding: 1rem 0;
+}
+
+.footer-bar a {
+  color: #fff !important;
+  font-weight: 500 !important;
+}
+
+.footer-bar a:hover {
+  text-decoration: underline !important;
+  color: #f0f0f0 !important;
+}
+
+.footer-bar .heart {
+  color: #d23f57;
+}
+
+/* Styles for the index page when no events are available */
+
+.empty-events {
+  background-color: #faf6e9;
+  color: #4b5945;
+  padding: 3rem 1rem;
+  border: 1px solid #ddeb9d;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.empty-events .bi-calendar-x {
+  color: #a0c878 !important;
+}
+
+.empty-events p {
+  font-size: 1.1rem !important;
+  color: #6c757d !important;
+}
+
+/* Style for My Booking page when the user has not booked any events */
+
+h2.text-primary {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #a0c878 !important;
+  display: flex;
+  align-items: center !important;
+  gap: 0.5rem;
+}
+
+h2.text-primary i {
+  font-size: 1.5rem;
+}
+
+.alert-warning {
+  background-color: #fffce3;
+  color: #4b5945;
+  border: 1px solid #f5e98e;
+  font-weight: 500;
+  border-radius: 0.75rem;
+}
+
+/* My Booking page where events are being shown */
+
+hr {
+  margin: 3rem 0 !important;
+}
+
+/* card style*/
+
+.card {
+  border: none !important;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1) !important;
+}
+
+.card-img-top {
+  border-bottom: 1px solid #eaeaea;
+}
+
+.card-title {
+  font-weight: 600;
+  color: #4b5945;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: #5f6b57 !important;
+}
+
+.card-body .text-muted {
+  color: #5f6b57 !important;
+}
+
+.card-body .text-muted i {
+  color: #a0c878;
+  margin-right: 0.4rem;
+}
+
+/* style of organizer page */
+
+.organizer-section {
+  background-color: #faf6e9;
+  color: #4b5945;
+}
+
+.section-title {
+  color: #a0c878;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.section-subtitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.list-group-item {
+  background-color: #fffdf6;
+  border: 1px solid #e6ecdc;
+  color: #333333;
+  font-weight: 500;
+}
+
+/* show page */
+.h5-showPage {
+  font-weight: 600;
+  color: #7aa853;
+}
+.text-info {
+  color: #4b5945 !important;
+}
+
+.text-success {
+  color: #7aa853 !important;
+}
+
+.text-danger {
+  color: #cf5a52 !important;
+}
+
+/* new form */
+
+.event-form .card {
+  background-color: #fffdf6;
+}
+
+.event-form .card-header {
+  background-color: #a0c878 !important;
+  border-bottom: none;
+  padding: 1rem 1.25rem;
+}
+.event-form label {
+  color: #4b5945;
+  font-weight: 600;
+}
+.event-form .form-control {
+  border: 1px solid #ced4da;
+  font-weight: 500;
+  color: #333 !important;
+}
+
+.event-form .form-control:focus {
+  border-color: #a0c878;
+  box-shadow: 0 0 0 0.2rem rgba(160, 200, 120, 0.25);
+}
+
+/* authentication */
+
+.authenticate h2 {
+  color: #4b5945;
+}
+.authenticate .link-color {
+  color: #4b5945;
+}
+.authenticate .link-color a {
+  color: #a0c878;
+  font-weight: 500;
+  text-decoration: none;
+}
+.authenticate .link-color a:hover {
+  color: #8bb165;
+  text-decoration: underline;
+}
+
+input:-webkit-autofill {
+  background-color: #fff !important;
+  box-shadow: 0 0 0 1000px #fff inset !important;
+  -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+  -webkit-text-fill-color: #333 !important;
+}
+
+input:-webkit-autofill:focus {
+  box-shadow: 0 0 0 1000px #fff inset, 0 0 0 0.2rem rgba(160, 200, 120, 0.25) !important;
+
+  -webkit-box-shadow: 0 0 0 1000px #fff inset,
+    0 0 0 0.2rem rgba(160, 200, 120, 0.25) !important;
+}
+
+/* navbar collapse */
+
+@media (max-width: 767.98px) {
+  .mainNavbar {
+    height: 62px;
+  }
+  .subnavbar {
+    height: 45px;
+    top: 62px;
+  }
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #faf6e9;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    border-top: 1px solid #ddeb9d;
+  }
+  .navbar-collapse .nav-link {
+    padding: 0.5rem 1rem !important;
+    margin-left: 0.5rem !important;
+  }
+}

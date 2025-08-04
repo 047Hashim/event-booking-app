@@ -1,0 +1,56 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container py-3">
+  <h2 class="mb-4 text-primary">
+    <i class="fa-regular fa-calendar"></i> My Booked Events
+  </h2>
+  <% if (!booking || booking.event.length === 0) { %>
+  <div class="alert alert-warning">You have not booked any events yet.</div>
+  <% } else { %> <% booking.event.forEach((event, index) => { %>
+  <div class="card mb-4 shadow-lg border-0 rounded-4 overflow-hidden">
+    <img
+      src="<%= event.image.url %>"
+      class="card-img-top"
+      style="height: 300px; object-fit: cover"
+      alt="<%= event.title %>"
+    />
+
+    <div class="card-body px-4 py-3">
+      <h4 class="card-title mb-2 text-dark"><%= event.title %></h4>
+
+      <p class="text-muted mb-1">
+        <i class="fa-solid fa-location-dot"></i> <%=event.location %>
+      </p>
+      <p class="text-muted mb-1">
+        <i class="fa-regular fa-calendar"></i>
+        <%= new Date(event.date).toLocaleDateString("en-US", { year: "numeric",
+        month: "long", day: "numeric" }) %>
+      </p>
+
+      <% const fullTime = new Date(`1970-01-01T${event.time}`); %>
+      <p class="text-muted mb-3">
+        <i class="fa-regular fa-clock"></i>
+        <%= fullTime.toLocaleTimeString(undefined, { hour: '2-digit', minute:
+        '2-digit' }) %>
+      </p>
+
+      <p class="card-text mb-3"><%= event.description %></p>
+
+      <!-- Unbook Button -->
+      <form
+        action="/events/<%= event._id %>/bookings?_method=DELETE&source=mybookingPage"
+        method="POST"
+      >
+        <button type="submit" class="btn btn-outline-danger rounded-pill">
+          <i class="bi bi-x-circle me-1"></i> Unbook Event
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <% if (booking.event.length > 1 && index < booking.event.length - 1) { %>
+  <!-- Separator line between cards -->
+  <hr style="border-top: 2px dashed #a0c878" />
+
+  <% } %> <% }) %> <% } %>
+</div>
