@@ -95,27 +95,33 @@ app.use((req, res, next) => {
 });
 
 app.get("/", async (req, res) => {
-  const now = new Date();
-  let events = await Event.find({}).sort({ date: 1 });
-  // Filter events whose date + time is truly in the future
-  const upcomingEvents = events.filter((event) => {
-    const eventDate = new Date(event.date);
-    const [hours, minutes] = event.time.split(":").map(Number);
-    const timezoneOffset = event.timezoneOffset || 0;
-    const eventDateTime = new Date(
-      Date.UTC(
-        eventDate.getFullYear(),
-        eventDate.getMonth(),
-        eventDate.getDate(),
-        hours,
-        minutes + timezoneOffset,
-        0, // seconds
-        0 // milliseconds
-      )
-    );
-    return eventDateTime.getTime() > now.getTime();
-  });
-  res.render("landing.ejs", { upcomingEvents: upcomingEvents.slice(0, 3) });
+  if (!res.locals.currUser) {
+    const now = new Date();
+    let events = await Event.find({}).sort({ date: 1 });
+    // Filter events whose date + time is truly in the future
+    const upcomingEvents = events.filter((event) => {
+      const eventDate = new Date(event.date);
+      const [hours, minutes] = event.time.split(":").map(Number);
+      const timezoneOffset = event.timezoneOffset || 0;
+      const eventDateTime = new Date(
+        Date.UTC(
+          eventDate.getFullYear(),
+          eventDate.getMonth(),
+          eventDate.getDate(),
+          hours,
+          minutes + timezoneOffset,
+          0, // seconds
+          0 // milliseconds
+        )
+      );
+      return eventDateTime.getTime() > now.getTime();
+    });
+    return res.render("landing.ejs", {
+      upcomingEvents: upcomingEvents.slice(0, 3),
+    });
+  } else {
+    res.redirect("/events");
+  }
 });
 
 app.use("/events", eventRoute);
